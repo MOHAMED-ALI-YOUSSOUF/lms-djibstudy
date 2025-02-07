@@ -4,7 +4,7 @@
 import { useUser } from "@clerk/nextjs";
 import { CheckCircle } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { useTransition } from "react";
 
 function EnrollButton({
@@ -15,10 +15,12 @@ function EnrollButton({
   isEnrolled: boolean;
 }) {
   const { user, isLoaded: isUserLoaded } = useUser();
-  const router = useRouter();
+  // const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
-  const handleEnroll = async (courseId: string) => {
+  const handleEnroll = async (
+    // courseId: string
+  ) => {
     startTransition(async () => {
       try {
         const userId = user?.id;
@@ -69,7 +71,9 @@ function EnrollButton({
         }
       `}
       disabled={!user?.id || isPending}
-      onClick={() => handleEnroll(courseId)}
+      onClick={() => handleEnroll(
+        // courseId
+      )}
     >
       {!user?.id ? (
         <span className={`${isPending ? "opacity-0" : "opacity-100"}`}>
